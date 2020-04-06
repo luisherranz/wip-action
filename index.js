@@ -1,7 +1,7 @@
 const { Toolkit } = require('actions-toolkit')
 const { context, github: { request } } = new Toolkit()
 
-const isWip = /\bwip\b/i.test(context.payload.pull_request.title)
+const isWip = /^wip/i.test(context.payload.pull_request.title)
 const newStatus = isWip ? 'pending' : 'success'
 
 // https://developer.github.com/v3/repos/statuses/#create-a-status
